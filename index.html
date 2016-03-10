@@ -12,13 +12,35 @@
 <button class="btn btn-warning" onclick="alert('shoot down');">Warring!!</button>
 
 
-<script type="text/javascript">$(document).ready(function(){
-    $(".panel-heading").click(function(){
+<script type="text/javascript">
+    var color;
+    $(document).ready(function(){
+        var panelid = $('#ip');
+    $(".panel-heading").mouseover(function(){
         $(".panel-body").slideToggle("slow");
     });
+
+    $("#default").click(function(){
+        color="default";
+    });
+        $("#success").click(function(){
+            color="success";
+        });
+        $("#btnok").click(function(){
+
+            switch (color){
+                case "default":
+                    panelid.attr("class","panel panel-default");
+                    break;
+                case "success":
+                    panelid.attr("class","panel panel-success");
+                    break;
+            }
+
+        });
 });</script>
 
-<div class="panel panel-warning">
+<div class="panel panel-warning"  id="ip">
     <div class="panel-heading">
         <h3 class="panel-title">Panel title</h3>
     </div>
@@ -26,6 +48,35 @@
         Panel content
     </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Set Color</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-default" id="default" >default</button>
+                <button class="btn btn-success" id="success" >success</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
 
 
 </body>
